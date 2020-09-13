@@ -21,5 +21,34 @@ var questions = [
       }
   ];
 
-
+// timer function
+  function startTimer() {
+    var timeLeft = 60;
+    var timerText = document.getElementById("timer");
+    var timeInterval = setInterval(function() {
+      timerText.textContent = "Time remaining: "+ timeLeft;
+      timeLeft--;
   
+      if (timeLeft === 0) {
+        timerText.textContent = "";
+        gameOver();
+        clearInterval(timeInterval);
+      }
+  
+    }, 1000);
+
+
+  }
+
+  var startButton = document.getElementById("start")
+  startButton.addEventListener("click", function(){
+      startTimer();
+      startButton.style.display = "none";
+      showQuestions();
+    //   showQuestions();
+  });
+
+
+  function showQuestions(){
+      
+  }
