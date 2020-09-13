@@ -6,18 +6,18 @@ var questions = [
     },
     {
         title: "Example Question 2:",
-        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        answer: "Choice 2"
+        choices: ["Choice A", "Choice B", "Choice C", "Choice D"],
+        answer: "Choice A"
     },
     {
         title: "Example Question 3:",
-        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        answer: "Choice 3"
+        choices: ["dfg 1", "agg 2", "agr 3", "nhh 4"],
+        answer:"dfg 1"
     },
     {
         title: "Example Question 4:",
-        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        answer: "Choice 4"
+        choices: ["sfg 1", "ggg 2", "gnbs 3", "sfgng 4"],
+        answer: "sfg 1"
     }
 ];
 
@@ -49,14 +49,6 @@ startButton.addEventListener("click", function () {
     startButton.style.display = "none";
     newQuestion();
 });
-
-// reset screen to load new question and answers
-// function reset() {
-//     currentIndex++
-//     myQ.innerText = " ";
-//     var answers = document.querySelectorAll(".answer-btn");
-//     answers.innerText = " ";
-//     }
 
     function newQuestion() {
         currentQues = questions[currentIndex];
@@ -99,7 +91,7 @@ startButton.addEventListener("click", function () {
             }
 
         }
-
+        // reset screen to load new question and answers when correct button clicked
         var correctClick = document.querySelector(".correct-answer");
 
         console.log(correctClick);
@@ -113,34 +105,18 @@ startButton.addEventListener("click", function () {
             newQuestion();
         });
 
-        // var wrongClick = document.querySelector(".wrong-answer");
 
-        // console.log(correctClick);
-        // correctClick.addEventListener("click", function () {
-        //     function reset() {
-        //         currentIndex++
-        //         document.getElementById('buttonDiv').innerHTML = ''
-                
-        //         }
-        //     reset();
-        //     newQuestion();
-        // });
+        // reset screen to load new question and answers and ding time when wrong answer clicked
+        var wrongClick = document.querySelectorAll(".wrong-answer");
+
+        console.log(wrongClick);
+        wrongClick.addEventListener("click", function () {
+            function reset() {
+                currentIndex++
+                document.getElementById('buttonDiv').innerHTML = '';
+                }
+            reset();
+            newQuestion();
+        });
     }
-        //     correctClick.style.color = "pink"
-    //     currentIndex++
-    //     myQ.innerText = " ";
-    //     var answers = document.querySelectorAll(".answer-btn");
-    //     answers.innerText = " ";
-    // });
-
-
-
-    // var wrongClick = document.querySelector(".wrong-answer");
-    // wrongClick.addEventListener("click", function () {
-    //     myQ.innerText= " ";
-    //     var answers = document.querySelectorAll(".answer-btn");
-    //     answers.innerText = " ";
-    //     timeLeft = timeLeft-10
-    //     newQuestion();
-    // });
 
