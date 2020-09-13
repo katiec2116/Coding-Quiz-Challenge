@@ -73,10 +73,10 @@ function showQuestions(question) {
     function answerButton(choices) {
         for (var c = 0; c < choices.length; c++) {
             const answer = document.createElement("button");
-            answer.classList.add('btn');
+            answer.classList.add('answer-btn');
             answer.innerText = choices[c]
             questDiv.appendChild(answer);
-
+            console.log(answer)
             
 
         }
