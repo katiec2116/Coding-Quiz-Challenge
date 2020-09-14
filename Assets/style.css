@@ -62,9 +62,10 @@ h1 {
     border-radius: 25px;
     color: hsl(0, 0%, 100%);
     display: inline-block;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 10px;
-    margin: 6px;
+    margin: 8px;
+    padding:10px;
     cursor: pointer;
     box-shadow: 0 0 10px 2px;
   }

@@ -22,7 +22,7 @@ var questions = [
 ];
 
 let currentIndex = 0
-var timeLeft = 30;
+var timeLeft = 60;
 
 function gameOver(){
     document.getElementById('buttonDiv').innerHTML = '';
