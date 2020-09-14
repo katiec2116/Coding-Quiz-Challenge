@@ -22,8 +22,10 @@ var questions = [
 ];
 
 let currentIndex = 0
-var timeLeft = 20;
+var timeLeft = 40;
 var content = document.getElementById("content");
+
+
 
 function gameOver(){
     document.getElementById('buttonDiv').innerHTML = '';
@@ -35,16 +37,29 @@ function gameOver(){
     else{
         score = timeLeft;
     }
-    console.log(score);
     myscore.innerHTML = "Your score is " + score  + "!";
     var initialForm= document.createElement("form");
     var form = document.createElement("input"); 
+    var sButton = document.createElement("input"); 
     form.setAttribute("type", "text"); 
     form.setAttribute("name", "Name"); 
     form.setAttribute("placeholder", "Enter your name"); 
+    sButton.setAttribute("type", "submit"); 
+    sButton.setAttribute("value", "Submit");
+    sButton.classList.add("endButton");
+    sButton.style.margin = "10px";
     content.appendChild(myscore);
     content.appendChild(initialForm);
     initialForm.appendChild(form);
+    initialForm.appendChild(sButton);
+    var goBack = document.createElement("button");
+    goBack.classList.add("endButton");
+    goBack.innerHTML = "Go Back";
+    content.appendChild(goBack);
+    goBack.addEventListener("click", function () {
+        location.reload();
+    });
+
     // add ol and display high scores
 }
 
@@ -66,7 +81,7 @@ function startTimer() {
         timerText.textContent = "Time remaining: " + timeLeft;
         timeLeft--;
 
-        if (timeLeft <= 0) {
+        if (timeLeft <= 0 || currentIndex === questions.length) {
             timerText.textContent = "";
             gameOver();
             clearInterval(timeInterval);
@@ -77,9 +92,6 @@ function startTimer() {
 // currentQues = questions[currentIndex];
 function newQuestion() {
     currentQues = questions[currentIndex];
-    // when (currentQues = questions.length){
-    //     endQuestion();
-    // }
     showQuestions(currentQues);
 }
 // creating div and header to display question
@@ -126,20 +138,6 @@ function showQuestions(question) {
         correctWord.classList.add("correctResult");
         correctWord.innerHTML="Correct";
         questDiv.appendChild(correctWord);
-
-        function fadeOutEffect(){
-        var fadeTarget = document.getElementById("correctResult");
-        var fadeEffect = setInterval(function () {
-            if (!fadeTarget.style.opacity) {
-                fadeTarget.style.opacity = 1;
-            }
-            if (fadeTarget.style.opacity > 0) {
-                fadeTarget.style.opacity -= 0.1;
-            } else {
-                clearInterval(fadeEffect);
-            }
-        }, 200);
-    }
 
         reset();
         newQuestion();

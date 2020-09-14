@@ -31,10 +31,11 @@ header {
   padding: 20px;
   padding-top: 0px;
   color: hsl(206, 17%, 28%);
+  display: inline
 }
 
 h1 {
-    float:center;
+    margin:40%;
 }
 
 .buttonDiv{
@@ -71,8 +72,8 @@ h1 {
   }
 
 
-.float-right {
-  float: right;
+  .floatright{
+    float: right;
 }
 
 .correctResult {
@@ -80,6 +81,23 @@ h1 {
     border-top: 2px solid rgb(138, 136, 136);
     padding: 15px;
     margin-top: 15px;
+    width:100%;
+    text-align: left;
+}
+
+
+.endButton {
+    border: none;
+    background-color: rgb(92, 2, 177);
+    border-radius: 25px;
+    color: hsl(0, 0%, 100%);
+    display: inline-block;
+    font-size: 16px;
+    line-height: 10px;
+    margin: 8px;
+    padding:12px;
+    cursor: pointer;
+    box-shadow: 0 0 10px 2px;
 }
 
 
