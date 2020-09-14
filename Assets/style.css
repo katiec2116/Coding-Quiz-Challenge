@@ -18,10 +18,9 @@ body {
 }
 
 .container {
-  padding-top: 30px;
+  padding-top: 325x;
   padding-left: 20px;
   padding-right: 20px;
-  /* display: flex; */
   justify-content: center;
   align-items: center;
 }
@@ -34,8 +33,11 @@ header {
   display: inline
 }
 
+
 h1 {
     margin:40%;
+    padding-top: 30px;
+    font-weight: bolder;
 }
 
 .buttonDiv{
@@ -62,12 +64,10 @@ h1 {
     background-color: rgb(92, 2, 177);
     border-radius: 25px;
     color: hsl(0, 0%, 100%);
-    display: inline-block;
     font-size: 16px;
     line-height: 10px;
     margin: 8px;
     padding:10px;
-    cursor: pointer;
     box-shadow: 0 0 10px 2px;
   }
 
@@ -87,12 +87,10 @@ h1 {
     background-color: rgb(92, 2, 177);
     border-radius: 25px;
     color: hsl(0, 0%, 100%);
-    display: inline-block;
     font-size: 16px;
     line-height: 10px;
     margin: 8px;
     padding:12px;
-    cursor: pointer;
     box-shadow: 0 0 10px 2px;
 }
 

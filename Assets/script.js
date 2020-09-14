@@ -18,11 +18,42 @@ var questions = [
         title: "Example Question 4:",
         choices: ["sfg 1", "ggg 2", "gnbs 3", "sfgng 4"],
         answer: "sfg 1"
+    },
+    {
+        title: "Example Question 5:",
+        choices: ["Choice A", "Choice B", "Choice C", "Choice D"],
+        answer: "Choice A"
+    },
+    {
+        title: "Example Question 6:",
+        choices: ["dfg 1", "agg 2", "agr 3", "nhh 4"],
+        answer: "dfg 1"
+    },
+    {
+        title: "Example Question 7:",
+        choices: ["sfg 1", "ggg 2", "gnbs 3", "sfgng 4"],
+        answer: "sfg 1"
+    }
+    ,
+    {
+        title: "Example Question 8:",
+        choices: ["Choice A", "Choice B", "Choice C", "Choice D"],
+        answer: "Choice A"
+    },
+    {
+        title: "Example Question 9:",
+        choices: ["dfg 1", "agg 2", "agr 3", "nhh 4"],
+        answer: "dfg 1"
+    },
+    {
+        title: "Example Question 10:",
+        choices: ["sfg 1", "ggg 2", "gnbs 3", "sfgng 4"],
+        answer: "sfg 1"
     }
 ];
 
 let currentIndex = 0
-var timeLeft = 40;
+var timeLeft = 60;
 var content = document.getElementById("content");
 
 
@@ -126,7 +157,8 @@ function showQuestions(question) {
         }
     }
 
-    // reset screen to load new question and answers when correct button clicked
+    // reset screen to load new question and answers when correct button is clicked
+    // and display correct!
     var correctClick = document.querySelector(".correct-answer");
 
     correctClick.addEventListener("click", function () {
@@ -143,7 +175,8 @@ function showQuestions(question) {
         questDiv.appendChild(correctWord);
     });
 
-  
+    // reset screen to load new question and answers when wrong button is clicked
+    // and display wrong!
     var wrongClick = document.querySelectorAll(".wrong-answer").forEach(wrongClick => {
     wrongClick.addEventListener("click", function () {
         function reset() {
