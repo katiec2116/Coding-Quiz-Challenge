@@ -134,21 +134,17 @@ function showQuestions(question) {
             currentIndex++
             document.getElementById('buttonDiv').innerHTML = ''
         }
-        var correctWord = document.createElement("h4");
-        correctWord.classList.add("correctResult");
-        correctWord.innerHTML="Correct";
-        questDiv.appendChild(correctWord);
-
         reset();
         newQuestion();
         var correctWord = document.createElement("h5");
         correctWord.classList.add("correctResult");
-        correctWord.innerHTML="Correct";
+        correctWord.innerHTML="Correct!";
+        correctWord.classList.add("result");
         questDiv.appendChild(correctWord);
     });
 
-    // reset screen to load new question and answers and ding time when wrong answer clicked
-    var wrongClick = document.querySelector(".wrong-answer");
+  
+    var wrongClick = document.querySelectorAll(".wrong-answer").forEach(wrongClick => {
     wrongClick.addEventListener("click", function () {
         function reset() {
             currentIndex++
@@ -157,6 +153,12 @@ function showQuestions(question) {
         timeLeft = timeLeft - 10;
         reset();
         newQuestion();
+        var wrongWord = document.createElement("h5");
+        wrongWord.classList.add("wrongResult");
+        wrongWord.innerHTML="Wrong!";
+        wrongWord.classList.add("result");
+        questDiv.appendChild(wrongWord);
     });
+  })
 }
 

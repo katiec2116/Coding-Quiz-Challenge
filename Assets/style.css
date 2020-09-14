@@ -72,11 +72,7 @@ h1 {
   }
 
 
-  .floatright{
-    float: right;
-}
-
-.correctResult {
+.result {
     color: rgb(138, 136, 136);
     border-top: 2px solid rgb(138, 136, 136);
     padding: 15px;
