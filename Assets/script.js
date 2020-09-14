@@ -22,13 +22,29 @@ var questions = [
 ];
 
 let currentIndex = 0
-var timeLeft = 60;
+var timeLeft = 20;
+var content = document.getElementById("content");
 
 function gameOver(){
     document.getElementById('buttonDiv').innerHTML = '';
-    document.getElementById('header').innerHTML = 'High Scores';
-    var score = timeLeft;
-    var scoreDiv = document.createElement("div");
+    document.getElementById('header').innerHTML = 'All Done!';
+    var myscore = document.createElement("p");
+    if (timeLeft < 0){
+        var score= 0
+    }
+    else{
+        score = timeLeft;
+    }
+    console.log(score);
+    myscore.innerHTML = "Your score is " + score  + "!";
+    var initialForm= document.createElement("form");
+    var form = document.createElement("input"); 
+    form.setAttribute("type", "text"); 
+    form.setAttribute("name", "Name"); 
+    form.setAttribute("placeholder", "Enter your name"); 
+    content.appendChild(myscore);
+    content.appendChild(initialForm);
+    initialForm.appendChild(form);
     // add ol and display high scores
 }
 
