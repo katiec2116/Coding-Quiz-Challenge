@@ -53,10 +53,28 @@ var questions = [
 ];
 
 let currentIndex = 0
-var timeLeft = 60;
+var timeLeft = 40;
 var content = document.getElementById("content");
 
+function load (){
+    var header = document.getElementById("header1")
+    var hs = document.createElement("p");
+    var time = document.createElement("p");
+    var title = document.createElement("h1");
+    hs.setAttribute("class", "float-left");
+    hs.innerHTML = "Link to Highscores";
+    header.appendChild(hs);
+    time.setAttribute("class", "float-right");
+    time.id = "timer"
+    time.innerHTML = "Time Remaining: 60";
+    header.appendChild(time);
+    title.setAttribute("class", "float-center");
+    title.innerHTML = "Quiz";
+    header.appendChild(title);
+    title.id = "header"
+}
 
+document.onload = load();
 
 function gameOver(){
     document.getElementById('buttonDiv').innerHTML = '';
@@ -112,7 +130,9 @@ function startTimer() {
         timerText.textContent = "Time remaining: " + timeLeft;
         timeLeft--;
 
-        if (timeLeft <= 0 || currentIndex === questions.length) {
+        if (timeLeft <= 0 || currentIndex == questions.length) {
+            console.log(currentIndex);
+            console.log(questions.length);
             timerText.textContent = "";
             gameOver();
             clearInterval(timeInterval);
