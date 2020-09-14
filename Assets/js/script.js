@@ -1,61 +1,8 @@
-var questions = [
-    {
-        title: "Example Question 1:",
-        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        answer: "Choice 1"
-    },
-    {
-        title: "Example Question 2:",
-        choices: ["Choice A", "Choice B", "Choice C", "Choice D"],
-        answer: "Choice A"
-    },
-    {
-        title: "Example Question 3:",
-        choices: ["dfg 1", "agg 2", "agr 3", "nhh 4"],
-        answer: "dfg 1"
-    },
-    {
-        title: "Example Question 4:",
-        choices: ["sfg 1", "ggg 2", "gnbs 3", "sfgng 4"],
-        answer: "sfg 1"
-    },
-    {
-        title: "Example Question 5:",
-        choices: ["Choice A", "Choice B", "Choice C", "Choice D"],
-        answer: "Choice A"
-    },
-    {
-        title: "Example Question 6:",
-        choices: ["dfg 1", "agg 2", "agr 3", "nhh 4"],
-        answer: "dfg 1"
-    },
-    {
-        title: "Example Question 7:",
-        choices: ["sfg 1", "ggg 2", "gnbs 3", "sfgng 4"],
-        answer: "sfg 1"
-    }
-    ,
-    {
-        title: "Example Question 8:",
-        choices: ["Choice A", "Choice B", "Choice C", "Choice D"],
-        answer: "Choice A"
-    },
-    {
-        title: "Example Question 9:",
-        choices: ["dfg 1", "agg 2", "agr 3", "nhh 4"],
-        answer: "dfg 1"
-    },
-    {
-        title: "Example Question 10:",
-        choices: ["sfg 1", "ggg 2", "gnbs 3", "sfgng 4"],
-        answer: "sfg 1"
-    }
-];
-
 let currentIndex = 0
 var timeLeft = 40;
 var content = document.getElementById("content");
 
+// create initial text and button when page loads
 function load (){
     var header = document.getElementById("header1")
     var hs = document.createElement("p");
@@ -63,19 +10,19 @@ function load (){
     var title = document.createElement("h1");
     hs.setAttribute("class", "float-left");
     hs.innerHTML = "Link to Highscores";
-    header.appendChild(hs);
     time.setAttribute("class", "float-right");
     time.id = "timer"
     time.innerHTML = "Time Remaining: 60";
-    header.appendChild(time);
     title.setAttribute("class", "float-center");
     title.innerHTML = "Quiz";
-    header.appendChild(title);
+    header.append(hs, time, title);
     title.id = "header"
 }
 
+// call load function
 document.onload = load();
 
+// gets score and creates ending page to enter information
 function gameOver(){
     document.getElementById('buttonDiv').innerHTML = '';
     document.getElementById('header').innerHTML = 'All Done!';
@@ -105,9 +52,7 @@ function gameOver(){
     goBack.classList.add("endButton");
     goBack.innerHTML = "Go Back";
     content.appendChild(goBack);
-    goBack.addEventListener("click", function () {
-        location.reload();
-    });
+    goBack.addEventListener("click", location.reload);
 
     // add ol and display high scores
 }
