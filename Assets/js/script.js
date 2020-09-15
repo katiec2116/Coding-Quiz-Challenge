@@ -10,7 +10,7 @@ var mainDisplay = document.createElement("h3");
 // ceate button to start quix
 var startBtn = document.createElement("button");
 startBtn.classList.add("button", "float-center");
-
+var contentDiv = document.getElementById("content");
 var hs = document.createElement("p");
 var initialForm = document.createElement("form");
 var form = document.createElement("input");
@@ -35,6 +35,7 @@ let highscores = [];
 // call function to show opening page
 onLoad();
 init();
+
 
 // add event listener to start quiz
 startBtn.onclick = startQuiz;
@@ -91,6 +92,8 @@ function nextQuestion(){
     for (choice in currentQuestion.choices) {
         // create button for choices
         var choiceBtn = document.createElement("button");
+        choiceBtn.classList.add("answer-btn");
+        choiceBtn.classList.add("answer-btn");
         choiceBtn.textContent = currentQuestion.choices[choice];
         // add click event listener to check for answer
         choiceBtn.onclick = checkAnswer;
@@ -106,7 +109,7 @@ function checkAnswer(event){
         var responseText = event.target.textContent;
         if (responseText === questions[index].answer) {
             index++
-    
+            console.log(timer);
             if(timer <= 0 || index == questions.length){
                 gameOver();
             }
@@ -120,6 +123,7 @@ function checkAnswer(event){
         else {
             timer = timer-10;
             index++
+            console.log(timer);
             if(timer <= 0 || index == questions.length){
                 gameOver()
             }
@@ -166,6 +170,13 @@ goBack.addEventListener("click", function () {
     location.reload()
 });
 
+hs.addEventListener('click', function(){
+    displayQuestionsEl.innerHTML="";
+    document.getElementById("title").textContent = "Highscores";
+    storeScores();
+    showHighscores();
+});
+
 
 // on submit , clear out button div 
 // add data to local storage
@@ -182,8 +193,9 @@ sButton.addEventListener("click", function(event) {
     // Add new score to the array & clear the input
     highscores.push(scoresText);
     form.value = "";
+    document.getElementById("title").textContent = "Highscores";
+    displayQuestionsEl.style.display = "none";
     storeScores();
-    // checkLocalStorage();
     showHighscores();
 });
 
@@ -209,9 +221,10 @@ function storeScores() {
 // display scores from local storage
 function showHighscores() {
     // Clear element
-    var bottomDiv = document.querySelector(".buttonDiv");
-    bottomDiv.innerHTML= "";
+    // var bottomDiv = document.querySelector(".buttonDiv");
+    // bottomDiv.innerHTML= "";
     var table = document.createElement("ul");
+    resultsEl.appendChild(table);
 
   
     // Render a new li for each todo
@@ -220,7 +233,6 @@ function showHighscores() {
   
       var li = document.createElement("li");
       li.textContent = score;
-  
       table.appendChild(li);
     }
 }
