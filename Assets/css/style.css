@@ -25,26 +25,14 @@ body {
   align-items: center;
 }
 
-header {
-  text-align: center;
-  padding: 20px;
-  padding-top: 0px;
-  color: hsl(206, 17%, 28%);
-  display: inline
-}
-
 
 h1 {
-    margin:40%;
     padding-top: 30px;
     font-weight: bolder;
 }
 
-.buttonDiv{
-    margin:auto;
-}
 
-.buttons {
+.button {
   border: none;
   background-color: rgb(92, 2, 177);
   border-radius: 25px;
