@@ -164,3 +164,25 @@ function checkAnswer(event){
 goBack.addEventListener("click", function () {
     location.reload()
 });
+
+
+// on submit , clear out button div 
+// add data to local storage
+// display high scores list
+sButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    var scoresText = form.value.trim() + " " + score;
+
+    // Return from function early if submitted form is blank
+    if (form.value === "") {
+        return;
+    }
+
+    // Add new score to the array & clear the input
+    highscores.push(scoresText);
+    form.value = "";
+    storeScores();
+    // checkLocalStorage();
+    showHighscores();
+
+});
