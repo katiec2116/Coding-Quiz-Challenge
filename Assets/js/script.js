@@ -65,6 +65,32 @@ function showTimer(){
     }, 1000)
 }
 
+// finction that handles and dispalys the next question
+function nextQuestion(){
+    // declare a variable to store current q index. Assign to current q
+    var currentQuestion = questions[index]
+    // empty question container element;
+    displayQuestionsEl.textContent = "";
+    // add current question to container
+    mainDisplay.textContent=currentQuestion.title;
+    // append text to show
+    displayQuestionsEl.append(mainDisplay);
+    // create div element to wrap choices
+    var choicesContainer = document.createElement("div");
+    choicesContainer.classList.add("buttonDiv");
+    // choicesContainer.classList.add("btn-group-vertical");
+    // use a loop to -- Change to for Each
+    for (choice in currentQuestion.choices) {
+        // create button for choices
+        var choiceBtn = document.createElement("button");
+        choiceBtn.textContent = currentQuestion.choices[choice];
+        // add click event listener to check for answer
+        choiceBtn.onclick = checkAnswer;
+        choicesContainer.append(choiceBtn);
+    }
+    displayQuestionsEl.append(choicesContainer);
+}
+
 
 
 
@@ -108,79 +134,4 @@ function showTimer(){
 
 
 
-
-// // currentQues = questions[currentIndex];
-// function newQuestion() {
-//     currentQues = questions[currentIndex];
-//     showQuestions(currentQues);
-// }
-// // creating div and header to display question
-// var questDiv = document.getElementById("buttonDiv");
-// questDiv.classList.add("btn-group-vertical")
-
-// function showQuestions(question) {
-//     var myQ = document.createElement("h2");
-//     myQ.classList.add("question");
-//     questDiv.appendChild(myQ);
-//     myQ.innerText = question.title;
-//     // call function to display answer buttons
-//     answerButton(question.choices);
-
-//     // create answer button for each option
-//     function answerButton(numChoices) {
-//         for (var c = 0; c < numChoices.length; c++) {
-//             var choice = document.createElement("button");
-//             choice.classList.add("answer-btn");
-//             choice.innerText = numChoices[c]
-//             questDiv.appendChild(choice);
-
-//             // compare if answer choice is right and add class accordingly
-//             var correct = currentQues.answer;
-
-//             if (choice.textContent === correct) {
-//                 choice.classList.add("correct-answer");
-//             }
-//             else {
-//                 choice.classList.add("wrong-answer");
-//             }
-//         }
-//     }
-
-//     // reset screen to load new question and answers when correct button is clicked
-//     // and display correct!
-//     var correctClick = document.querySelector(".correct-answer");
-
-//     correctClick.addEventListener("click", function () {
-//         function reset() {
-//             currentIndex++
-//             document.getElementById('buttonDiv').innerHTML = ''
-//         }
-//         reset();
-//         newQuestion();
-//         var correctWord = document.createElement("h5");
-//         correctWord.classList.add("correctResult");
-//         correctWord.innerHTML="Correct!";
-//         correctWord.classList.add("result");
-//         questDiv.appendChild(correctWord);
-//     });
-
-//     // reset screen to load new question and answers when wrong button is clicked
-//     // and display wrong!
-//     var wrongClick = document.querySelectorAll(".wrong-answer").forEach(wrongClick => {
-//     wrongClick.addEventListener("click", function () {
-//         function reset() {
-//             currentIndex++
-//             document.getElementById('buttonDiv').innerHTML = '';
-//         }
-//         timeLeft = timeLeft - 10;
-//         reset();
-//         newQuestion();
-//         var wrongWord = document.createElement("h5");
-//         wrongWord.classList.add("wrongResult");
-//         wrongWord.innerHTML="Wrong!";
-//         wrongWord.classList.add("result");
-//         questDiv.appendChild(wrongWord);
-//     });
-//   })
-// }
 
