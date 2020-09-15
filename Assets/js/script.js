@@ -28,7 +28,15 @@ var resultDisplay = document.createElement("p");
 var score = 0;
 let highscores = [];
 
+
+
 // FUNCTIONS
+
+// call function to show opening page
+onLoad();
+
+// add event listener to start quiz
+startBtn.onclick = startQuiz;
 
 // function that loads the contents when page first loads
 function onLoad() {
@@ -122,46 +130,33 @@ function checkAnswer(event){
     
         }
     }
-
-
-
-
-// // gets score and creates ending page to enter information
-// function gameOver(){
-//     document.getElementById('buttonDiv').innerHTML = '';
-//     document.getElementById('header').innerHTML = 'All Done!';
-//     var myscore = document.createElement("p");
-//     if (timeLeft < 0){
-//         var score= 0
-//     }
-//     else{
-//         score = timeLeft;
-//     }
-//     myscore.innerHTML = "Your score is " + score  + "!";
-//     var initialForm= document.createElement("form");
-//     var form = document.createElement("input"); 
-//     var sButton = document.createElement("input"); 
-//     form.setAttribute("type", "text"); 
-//     form.setAttribute("name", "Name"); 
-//     form.setAttribute("placeholder", "Enter your name"); 
-//     sButton.setAttribute("type", "submit"); 
-//     sButton.setAttribute("value", "Submit");
-//     sButton.classList.add("endButton");
-//     sButton.style.margin = "10px";
-//     content.appendChild(myscore);
-//     content.appendChild(initialForm);
-//     initialForm.appendChild(form);
-//     initialForm.appendChild(sButton);
-//     var goBack = document.createElement("button");
-//     goBack.classList.add("endButton");
-//     goBack.innerHTML = "Go Back";
-//     content.appendChild(goBack);
-//     goBack.addEventListener("click", function(){
-//     location.reload()});
-
-//     // add ol and display high scores
-// }
-
-
-
+    // go to ending page when timer hits zero or no questions left
+    function gameOver(){
+        if (timer < 0) {
+            score = 0
+        }
+        else {
+            score = timer;
+        }
+        // create elements for form 
+        timerEl.style.display = "none";
+        resultDisplay.style.display="none";
+        var bottomDiv = document.querySelector(".buttonDiv");
+        bottomDiv.innerHTML= "";
+        mainDisplay.textContent = "Your score is " + score+ "!";
+        form.setAttribute("type", "text");
+        form.setAttribute("name", "Name");
+        form.setAttribute("placeholder", "Enter your name");
+        sButton.setAttribute("type", "submit");
+        sButton.setAttribute("value", "Submit");
+        sButton.classList.add("endButton");
+        sButton.style.margin = "10px";
+        bottomDiv.appendChild(initialForm);
+        initialForm.appendChild(form);
+        initialForm.appendChild(sButton);
+        goBack.classList.add("endButton");
+        goBack.innerHTML = "Go Back";
+        bottomDiv.appendChild(goBack);
+    
+    }
 
