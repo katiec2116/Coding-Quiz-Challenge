@@ -39,8 +39,36 @@ function onLoad() {
     hs.innerHTML = "Link to Highscores";
     timerEl.prepend(hs);
 
-// // call load function
-// document.onload = load();
+}
+
+// function that shows the question and starts the timer
+function startQuiz(){
+    // show timer function
+    showTimer();
+    nextQuestion();
+
+}
+
+// function that handles the timer
+function showTimer(){
+    // display timer to screen
+    timerEl.textContent="Time remaining: " + timer;
+    // create setInterval and store it to a variable
+    var questionTimer = setInterval(function(){
+        timer--
+        // display timer to the screen
+        timerEl.textContent="Time remaining: " + timer;
+        // if timer gets to 0 clear interval
+        if (timer <= 0){
+            clearInterval(questionTimer)
+        }
+    }, 1000)
+}
+
+
+
+
+
 
 // // gets score and creates ending page to enter information
 // function gameOver(){
@@ -78,33 +106,8 @@ function onLoad() {
 //     // add ol and display high scores
 // }
 
-// // starts quiz, button disappears on click, calls startTimer and calls showQuestions
-// var startButton = document.getElementById("start")
-// startButton.addEventListener("click", function () {
-//     startTimer();
 
-//     // make start button disappear
-//     startButton.style.display = "none";
-//     newQuestion();
-// });
 
-// // timer function
-// function startTimer() {
-//     // var timeLeft = 60;
-//     var timerText = document.getElementById("timer");
-//     var timeInterval = setInterval(function () {
-//         timerText.textContent = "Time remaining: " + timeLeft;
-//         timeLeft--;
-
-//         if (timeLeft <= 0 || currentIndex == questions.length) {
-//             console.log(currentIndex);
-//             console.log(questions.length);
-//             timerText.textContent = "";
-//             gameOver();
-//             clearInterval(timeInterval);
-//         }
-//     }, 1000);
-// }
 
 // // currentQues = questions[currentIndex];
 // function newQuestion() {
