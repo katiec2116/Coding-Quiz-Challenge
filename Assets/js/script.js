@@ -78,7 +78,6 @@ function nextQuestion(){
     // create div element to wrap choices
     var choicesContainer = document.createElement("div");
     choicesContainer.classList.add("buttonDiv");
-    // choicesContainer.classList.add("btn-group-vertical");
     // use a loop to -- Change to for Each
     for (choice in currentQuestion.choices) {
         // create button for choices
@@ -91,7 +90,38 @@ function nextQuestion(){
     displayQuestionsEl.append(choicesContainer);
 }
 
-
+// function to check the answer and display following question
+function checkAnswer(event){
+    // logic to check answer
+        resultDisplay.setAttribute("class", "result")
+        var responseText = event.target.textContent;
+        if (responseText === questions[index].answer) {
+            index++
+    
+            if(timer <= 0 || index == questions.length){
+                gameOver();
+            }
+            else{
+            nextQuestion();
+            resultDisplay.innerHTML = "Correct!";
+            displayQuestionsEl.appendChild(resultDisplay);
+            }
+        } 
+    
+        else {
+            timer = timer-10;
+            index++
+            if(timer <= 0 || index == questions.length){
+                gameOver()
+            }
+            else{
+            nextQuestion();
+            resultDisplay.innerHTML = "Wrong!";
+            displayQuestionsEl.appendChild(resultDisplay);
+            }
+    
+        }
+    }
 
 
 
