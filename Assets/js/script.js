@@ -30,22 +30,14 @@ let highscores = [];
 
 // FUNCTIONS
 
-// create initial text and button when page loads
-// function load (){
-//     var header = document.getElementById("header1")
-//     var hs = document.createElement("p");
-//     var time = document.createElement("p");
-//     var title = document.createElement("h1");
-//     hs.setAttribute("class", "float-left");
-//     hs.innerHTML = "Link to Highscores";
-//     time.setAttribute("class", "float-right");
-//     time.id = "timer"
-//     time.innerHTML = "Time Remaining: 60";
-//     title.setAttribute("class", "float-center");
-//     title.innerHTML = "Quiz";
-//     header.append(hs, time, title);
-//     title.id = "header"
-// }
+// function that loads the contents when page first loads
+function onLoad() {
+    mainDisplay.textContent= "press the button to start";
+    startBtn.textContent = "Start";
+    displayQuestionsEl.append(mainDisplay, startBtn);
+    hs.setAttribute("class", "float-left");
+    hs.innerHTML = "Link to Highscores";
+    timerEl.prepend(hs);
 
 // // call load function
 // document.onload = load();
