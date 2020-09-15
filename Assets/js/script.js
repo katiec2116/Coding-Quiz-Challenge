@@ -199,7 +199,28 @@ function init() {
     }
 }
 
+// store scores in local storage
 function storeScores() {
-    // Add code here to stringify the highscore array and save it to the "todos" key in localStorage
+    // stringify the highscore array and save it in localStorage
     localStorage.setItem("highscores", JSON.stringify(highscores));
+}
+
+
+// display scores from local storage
+function showHighscores() {
+    // Clear element
+    var bottomDiv = document.querySelector(".buttonDiv");
+    bottomDiv.innerHTML= "";
+    var table = document.createElement("ul");
+
+  
+    // Render a new li for each todo
+    for (var i = 0; i < highscores.length; i++) {
+      var score = highscores[i];
+  
+      var li = document.createElement("li");
+      li.textContent = score;
+  
+      table.appendChild(li);
+    }
 }
