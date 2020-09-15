@@ -34,6 +34,7 @@ let highscores = [];
 
 // call function to show opening page
 onLoad();
+init();
 
 // add event listener to start quiz
 startBtn.onclick = startQuiz;
@@ -184,5 +185,21 @@ sButton.addEventListener("click", function(event) {
     storeScores();
     // checkLocalStorage();
     showHighscores();
-
 });
+
+
+function init() {
+    // Check if there are highscores in localStorage
+    // Parse the value from localStorage and assign it to the highscores variable
+    let storedScores = JSON.parse(localStorage.getItem("highscores"));
+    // check if local storage is empty
+    if( storedScores !== null){
+      // reassign array to stored values
+      highscores = storedScores;
+    }
+}
+
+function storeScores() {
+    // Add code here to stringify the highscore array and save it to the "todos" key in localStorage
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+}
