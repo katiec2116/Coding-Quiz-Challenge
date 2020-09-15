@@ -160,3 +160,7 @@ function checkAnswer(event){
     
     }
 
+// reload to home page when go back button is clicked
+goBack.addEventListener("click", function () {
+    location.reload()
+});
