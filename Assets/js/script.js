@@ -12,8 +12,7 @@ var mainDisplay = document.createElement("h3");
 var startBtn = document.createElement("button");
 startBtn.classList.add("button");
 var hs = document.createElement("button");
-hs.classList.add("hsButtons")
-
+hs.classList.add("hsButtons");
 var initialForm = document.createElement("form");
 var form = document.createElement("input");
 var sButton = document.createElement("input");
