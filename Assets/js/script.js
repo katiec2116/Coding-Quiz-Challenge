@@ -1,4 +1,5 @@
-// hook elemeents from page
+// hook elements from page
+
 // hook question container elements
 var displayQuestionsEl = document.querySelector(".display-questions");
 // hook timer element
@@ -9,9 +10,10 @@ var resultsEl = document.querySelector(".results");
 var mainDisplay = document.createElement("h3");
 // ceate button to start quix
 var startBtn = document.createElement("button");
-startBtn.classList.add("button", "float-center");
-var contentDiv = document.getElementById("content");
-var hs = document.createElement("p");
+startBtn.classList.add("button");
+var hs = document.createElement("button");
+hs.classList.add("hsButtons")
+
 var initialForm = document.createElement("form");
 var form = document.createElement("input");
 var sButton = document.createElement("input");
@@ -31,7 +33,6 @@ let highscores = [];
 
 
 // FUNCTIONS
-
 // call function to show opening page
 onLoad();
 init();
@@ -45,9 +46,8 @@ function onLoad() {
     mainDisplay.textContent= "press the button to start";
     startBtn.textContent = "Start";
     displayQuestionsEl.append(mainDisplay, startBtn);
-    hs.setAttribute("class", "float-left");
     hs.innerHTML = "Link to Highscores";
-    timerEl.prepend(hs);
+    document.getElementById("container").append(hs);
 
 }
 
@@ -58,6 +58,8 @@ function startQuiz(){
     nextQuestion();
 
 }
+
+
 
 // function that handles the timer
 function showTimer(){
@@ -71,6 +73,7 @@ function showTimer(){
         // if timer gets to 0 clear interval
         if (timer <= 0){
             clearInterval(questionTimer)
+            gameOver();
         }
     }, 1000)
 }
@@ -93,7 +96,6 @@ function nextQuestion(){
         // create button for choices
         var choiceBtn = document.createElement("button");
         choiceBtn.classList.add("answer-btn");
-        choiceBtn.classList.add("answer-btn");
         choiceBtn.textContent = currentQuestion.choices[choice];
         // add click event listener to check for answer
         choiceBtn.onclick = checkAnswer;
@@ -109,8 +111,7 @@ function checkAnswer(event){
         var responseText = event.target.textContent;
         if (responseText === questions[index].answer) {
             index++
-            console.log(timer);
-            if(timer <= 0 || index == questions.length){
+            if(index == questions.length){
                 gameOver();
             }
             else{
@@ -123,8 +124,7 @@ function checkAnswer(event){
         else {
             timer = timer-10;
             index++
-            console.log(timer);
-            if(timer <= 0 || index == questions.length){
+            if(index == questions.length){
                 gameOver()
             }
             else{
@@ -132,9 +132,9 @@ function checkAnswer(event){
             resultDisplay.innerHTML = "Wrong!";
             displayQuestionsEl.appendChild(resultDisplay);
             }
-    
         }
-    }
+    } 
+    
     // go to ending page when timer hits zero or no questions left
     function gameOver(){
         if (timer < 0) {
@@ -221,9 +221,14 @@ function storeScores() {
 // display scores from local storage
 function showHighscores() {
     // Clear element
-    // var bottomDiv = document.querySelector(".buttonDiv");
-    // bottomDiv.innerHTML= "";
-    var table = document.createElement("ul");
+    var home = document.createElement("button");
+    home.classList.add("hsButtons")
+    hs.style.display="none";
+    home.textContent= "Go Back";
+    home.addEventListener("click", function () {
+        location.reload();
+    });
+    var table = document.createElement("ol");
     resultsEl.appendChild(table);
 
   
@@ -235,4 +240,6 @@ function showHighscores() {
       li.textContent = score;
       table.appendChild(li);
     }
+    resultsEl.appendChild(home);
 }
+

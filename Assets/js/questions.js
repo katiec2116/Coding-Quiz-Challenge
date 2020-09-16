@@ -1,6 +1,6 @@
 var questions = [
     {
-        title: "Example Question 1:",
+        title: "",
         choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
         answer: "Choice 1"
     },
