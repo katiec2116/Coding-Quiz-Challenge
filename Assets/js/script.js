@@ -7,7 +7,7 @@ var timerEl = document.querySelector(".timer");
 // hook results element
 var resultsEl = document.querySelector(".results");
 // create h3 to show instructions test and questions
-var mainDisplay = document.createElement("h3");
+var mainDisplay = document.createElement("p");
 // ceate button to start quix
 var startBtn = document.createElement("button");
 startBtn.classList.add("button");
@@ -42,7 +42,7 @@ startBtn.onclick = startQuiz;
 
 // function that loads the contents when page first loads
 function onLoad() {
-    mainDisplay.textContent= "press the button to start";
+    mainDisplay.textContent= "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!";
     startBtn.textContent = "Start";
     displayQuestionsEl.append(mainDisplay, startBtn);
     hs.innerHTML = "Link to Highscores";
@@ -80,7 +80,7 @@ function showTimer(){
 // finction that handles and dispalys the next question
 function nextQuestion(){
     // declare a variable to store current q index. Assign to current q
-    var currentQuestion = questions[index]
+    var currentQuestion = questions[index];
     // empty question container element;
     displayQuestionsEl.textContent = "";
     // add current question to container
@@ -221,12 +221,13 @@ function storeScores() {
 function showHighscores() {
     // Clear element
     var home = document.createElement("button");
+    var clear = document.createElement("button");
+    clear.classList.add('hsButtons')
     home.classList.add("hsButtons")
     hs.style.display="none";
     home.textContent= "Go Back";
-    home.addEventListener("click", function () {
-        location.reload();
-    });
+    clear.textContent = "Clear Highscores"
+
     var table = document.createElement("ol");
     resultsEl.appendChild(table);
 
@@ -239,6 +240,14 @@ function showHighscores() {
       li.textContent = score;
       table.appendChild(li);
     }
-    resultsEl.appendChild(home);
+    home.addEventListener("click", function () {
+        location.reload();
+    });
+
+    clear.addEventListener("click", function(){
+        localStorage.clear();
+        table.textContent = "";
+    });
+    resultsEl.append(home, clear);
 }
 
