@@ -21,7 +21,7 @@ var goBack = document.createElement("button");
 
 // declare globals
 // one to store timer number
-var timer = 60;
+var timer = 75;
 // one to store current index
 var index = 0;
 // element to show answer result
