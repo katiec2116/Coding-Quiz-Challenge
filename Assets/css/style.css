@@ -155,6 +155,9 @@ p{
   #container{
     width:60%;
   }
+  ol{
+    width: 60%;
+  }
 }
 @media (max-width: 780px) {
 
