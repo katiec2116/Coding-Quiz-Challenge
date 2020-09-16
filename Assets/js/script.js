@@ -182,7 +182,7 @@ hs.addEventListener('click', function(){
 // display high scores list
 sButton.addEventListener("click", function(event) {
     event.preventDefault();
-    var scoresText = form.value.trim() + " " + score;
+    var scoresText = form.value.trim() + " - " + score;
 
     // Return from function early if submitted form is blank
     if (form.value === "") {
